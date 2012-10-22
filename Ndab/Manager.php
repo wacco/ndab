@@ -106,13 +106,23 @@ abstract class Manager extends Nette\Object
 
 	/**
 	 * Inserts data into table
-	 * @param  mixed $values
+	 * @param  mixed $values  Entity or array data
 	 * @return Entity
 	 */
 	public function create($values)
 	{
 		$entity = $this->table()->insert($values);
 		return $this->get($entity[$this->primaryColumn]);
+	}
+
+
+	/**
+	 * Create new row entity
+	 * @return Entity
+	 */
+	public function newEntity($values = array())
+	{
+		return $this->initEntity((array)$values, $this->table());
 	}
 
 
