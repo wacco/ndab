@@ -91,6 +91,16 @@ abstract class Manager extends Nette\Object
 	}
 
 
+	/**
+	 * Returns all rows filtered by $conds (alias)
+	 * @param  array  $conds
+	 * @return Selection
+	 */
+	public function findAll($conds = array())
+	{
+		return $this->getAll($conds);
+	}
+
 
 	/**
 	 * Returns row identified by $privaryValue
@@ -102,6 +112,16 @@ abstract class Manager extends Nette\Object
 		return $this->table()->get($privaryValue);
 	}
 
+
+	/**
+	 * Returns row identified by $privaryValue (alias)
+	 * @param  mixed  $privaryValue
+	 * @return Entity
+	 */
+	public function find($privaryValue)
+	{
+		return $this->get($privaryValue);
+	}
 
 
 	/**
