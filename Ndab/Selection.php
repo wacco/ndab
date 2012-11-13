@@ -42,7 +42,7 @@ class Selection extends Table\Selection
 	 */
 	public function __construct(Nette\Database\Connection $connection, $table, Manager $manager)
 	{
-		parent::__construct($this->table = $table, $connection);
+		parent::__construct($connection, $this->table = $table);
 		$this->manager = $manager;
 	}
 
@@ -96,7 +96,7 @@ class Selection extends Table\Selection
 
 	protected function createGroupedSelectionInstance($table, $column)
 	{
-		return new GroupedSelection($this, $table, $column);
+		return new GroupedSelection($this, $table, $column, $this->manager);
 	}
 
 }

@@ -49,7 +49,7 @@ class Entity extends Table\ActiveRow
 	{
 		list($relatedSelector, $subItemSelector) = explode(':', $selector);
 
-		$related = $this->related($relatedSelector);
+		$related = $this->related($relatedSelector)->select($relatedSelector . '.*, ' . $subItemSelector . '.*');
 		if ($relatedCallback) {
 			callback($relatedCallback)->invokeArgs(array($related));
 		}
